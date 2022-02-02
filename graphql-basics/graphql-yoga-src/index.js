@@ -7,8 +7,16 @@ import { GraphQLServer } from "graphql-yoga";
 const typeDefs = `
     type Query {
         info: String!
-        location: String!
-        bio: String!
+        id: ID!
+        name: String!
+        age: Int!
+        isStudent: Boolean!
+        gpa: Float
+        title: String!
+        price: Float!
+        releaseYear: Int
+        rating: Float
+        inStock: Boolean!
     }
 `;
 
@@ -17,8 +25,16 @@ const typeDefs = `
 const resolver = {
   Query: {
     info: () => "A GraphQL API developed using graphql-yoga package.",
-    bio: () => "This is a sample bio.need to update later!!",
-    location: () => "TX, USA - 75063",
+    id: () => "12345",
+    name: () => "Ravindra",
+    age: () => 20,
+    isStudent: () => false,
+    gpa: () => null,
+    title: () => "Apple IPhone 13 Pro",
+    price: () => 999.99,
+    releaseYear: () => 2021,
+    rating: () => 4.5,
+    inStock: () => true,
   },
 };
 
