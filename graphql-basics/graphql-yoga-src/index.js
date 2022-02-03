@@ -7,16 +7,22 @@ import { GraphQLServer } from "graphql-yoga";
 const typeDefs = `
     type Query {
         info: String!
-        id: ID!
-        name: String!
-        age: Int!
-        isStudent: Boolean!
-        gpa: Float
-        title: String!
-        price: Float!
-        releaseYear: Int
-        rating: Float
-        inStock: Boolean!
+        me: User!
+        post: Post!
+    }
+
+    type Post {
+      id: ID!
+      title: String!
+      body: String!
+      published: Boolean!
+    }
+
+    type User {
+      id: ID!
+      name: String!
+      email: String!
+      age: Int
     }
 `;
 
@@ -25,16 +31,22 @@ const typeDefs = `
 const resolver = {
   Query: {
     info: () => "A GraphQL API developed using graphql-yoga package.",
-    id: () => "12345",
-    name: () => "Ravindra",
-    age: () => 20,
-    isStudent: () => false,
-    gpa: () => null,
-    title: () => "Apple IPhone 13 Pro",
-    price: () => 999.99,
-    releaseYear: () => 2021,
-    rating: () => 4.5,
-    inStock: () => true,
+    me: () => {
+      return {
+        id: "ABC123",
+        name: "Ravindra Ch",
+        email: "ravi@test.com",
+        age: null,
+      };
+    },
+    post: () => {
+      return {
+        id: "ABC345",
+        title: "A Sample Post",
+        body: "A sample description to test Post query",
+        published: true,
+      };
+    },
   },
 };
 
